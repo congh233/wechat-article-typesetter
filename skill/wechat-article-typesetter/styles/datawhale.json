@@ -1,0 +1,35 @@
+{
+  "id": "datawhale",
+  "name": "科技蓝分享会风",
+  "kicker": "AI 分享会 / AI SHARING",
+  "colors": {
+    "bg": "#F7F7F4",
+    "wall": "#D8D9D6",
+    "paper": "#FFFFFF",
+    "text": "#101010",
+    "muted": "#64645F",
+    "accent": "#2B5FBE",
+    "accent_dark": "#1D438A",
+    "yellow": "#FFC93C",
+    "line": "#101010",
+    "highlight_bg": "#FFF3C9",
+    "code_bg": "#EFEFEA",
+    "code_block_bg": "#101010",
+    "code_block_text": "#F5F5F2"
+  },
+  "fonts": {
+    "heading": "\"PingFang SC\",\"Microsoft YaHei\",\"Helvetica Neue\",sans-serif",
+    "body": "\"PingFang SC\",\"Microsoft YaHei\",\"Helvetica Neue\",sans-serif",
+    "mono": "\"Courier New\",Consolas,monospace"
+  },
+  "layout": {
+    "container_width": 677,
+    "body_size": 16,
+    "line_height": 2.0,
+    "h1_size": 40,
+    "h2_size": 24,
+    "h3_size": 17,
+    "padding": "32px 30px 42px",
+    "para_spacing": 18
+  }
+}

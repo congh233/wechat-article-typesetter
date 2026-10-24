@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>把「内耗」放回抽屉｜ZJUT AI 协会</title>
+<!-- 白纸实验手账（喜茶风）· 情绪主题 · 点缀色：奶油黄 #F2D16B
+     手工精排版范本：由排版助手项目沉淀的喜茶风设计配方手工制作，作为风格展示样例。
+     本项目自动排版输出请运行 scripts/typeset.py 生成。 -->
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#EDEDEA;
+    font-family:"Microsoft YaHei","PingFang SC",sans-serif;
+    font-weight:300;
+    color:#111111;
+    padding:24px 0 40px;
+  }
+  .page {
+    width:677px;
+    margin:0 auto;
+    background:#FFFFFF;
+    position:relative;
+    overflow:hidden;
+  }
+  .page.paper { background:#F7F7F5; }
+
+  /* 字体 */
+  .hand  { font-family:"KaiTi","STKaiti","楷体",serif; }
+  .pixel { font-family:"Consolas","Courier New",monospace; letter-spacing:3px; }
+
+  /* 点缀色：奶油黄 */
+  .mk { background:#F2D16B; padding:0 6px; }
+
+  /* 手写批注 */
+  .scrib {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:15px;
+    color:#111111;
+    transform:rotate(-3deg);
+  }
+
+  /* ===== 1 封面 ===== */
+  .cover { padding:96px 56px 64px; }
+  .cover .tag {
+    display:inline-block;
+    font-size:13px;
+    letter-spacing:4px;
+    color:#111;
+    border:1px solid #111;
+    padding:6px 14px;
+    margin-bottom:44px;
+  }
+  .cover h1 {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:58px;
+    line-height:1.35;
+    font-weight:400;
+    transform:rotate(-2deg);
+    margin-bottom:18px;
+  }
+  .cover h1 .line2 { margin-left:1.1em; }
+  .cover .sub {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:20px;
+    transform:rotate(-1deg);
+    margin-left:2.6em;
+    margin-bottom:56px;
+  }
+  .cover .stage {
+    position:relative;
+    height:300px;
+  }
+  .cover .note-arrow {
+    position:absolute;
+    top:8px; right:48px;
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:15px;
+    transform:rotate(2deg);
+  }
+  .green-blob {
+    position:absolute;
+    left:-42px; top:-26px;
+    width:180px; height:180px;
+    background:#F2D16B;
+    border-radius:50%;
+    opacity:.85;
+  }
+  .pixel-year {
+    position:absolute;
+    left:10px; top:34px;
+    font-size:15px;
+    color:#111;
+    transform:rotate(-4deg);
+    background:#F2D16B;
+    padding:4px 10px;
+  }
+
+  /* ===== 过渡页 ===== */
+  .trans { text-align:center; padding:120px 0; background:#FFFFFF; }
+  .trans p {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:17px;
+    color:#999999;
+    letter-spacing:2px;
+  }
+
+  /* ===== 2 背景 ===== */
+  .story { padding:84px 56px; }
+  .story .no {
+    font-family:"Consolas","Courier New",monospace;
+    font-size:13px;
+    letter-spacing:3px;
+    color:#999;
+    margin-bottom:34px;
+  }
+  .story p {
+    font-size:17px;
+    line-height:2.2;
+    margin-bottom:14px;
+  }
+  .story .margin {
+    margin-top:46px;
+    padding-left:60%;
+    position:relative;
+  }
+  .story .margin .scrib { display:block; line-height:1.9; }
+  .story .margin svg { position:absolute; left:46%; top:-30px; }
+
+  /* ===== 3 便签 ===== */
+  .sticky-page { padding:88px 56px 96px; }
+  .sticky {
+    position:relative;
+    background:#FFFFFF;
+    border:1px solid #DDDDD8;
+    box-shadow:4px 6px 0 rgba(0,0,0,.06);
+    padding:46px 42px 40px;
+    transform:rotate(1.5deg);
+    max-width:480px;
+    margin:0 auto;
+  }
+  .sticky::before {
+    content:"";
+    position:absolute;
+    right:-1px; bottom:-1px;
+    border-width:0 0 26px 26px;
+    border-style:solid;
+    border-color:transparent transparent #EFEFEC transparent;
+  }
+  .sticky .no {
+    font-family:"Consolas","Courier New",monospace;
+    font-size:14px;
+    letter-spacing:3px;
+    margin-bottom:26px;
+  }
+  .sticky h2 {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:34px;
+    font-weight:400;
+    margin-bottom:24px;
+  }
+  .sticky p { font-size:16px; line-height:2.1; }
+  .sticky .pin {
+    position:absolute;
+    top:-20px; left:50%;
+    margin-left:-15px;
+  }
+
+  /* ===== 4 拍立得 ===== */
+  .polaroid-page { padding:88px 56px 96px; }
+  .polaroid {
+    background:#FFFFFF;
+    width:430px;
+    margin:0 auto 52px;
+    padding:18px 18px 0;
+    border:1px solid #E2E2DE;
+    box-shadow:3px 5px 0 rgba(0,0,0,.05);
+    transform:rotate(-2deg);
+    position:relative;
+  }
+  .polaroid .photo {
+    background:#F7F7F5;
+    height:280px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .polaroid .cap {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:15px;
+    text-align:center;
+    padding:14px 0 16px;
+    letter-spacing:2px;
+  }
+  .polaroid .tape {
+    position:absolute;
+    top:-14px; left:50%;
+    margin-left:-44px;
+    width:88px; height:26px;
+    background:rgba(242,209,107,.55);
+    transform:rotate(3deg);
+  }
+  .polaroid-page .no {
+    font-family:"Consolas","Courier New",monospace;
+    font-size:14px;
+    letter-spacing:3px;
+    margin-bottom:26px;
+    padding-left:18px;
+  }
+  .polaroid-page h2 {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:34px;
+    font-weight:400;
+    margin-bottom:22px;
+    padding-left:18px;
+  }
+  .polaroid-page p { font-size:16px; line-height:2.1; padding-left:18px; }
+  .polaroid-page .scrib { display:block; margin-top:30px; padding-left:62%; }
+
+  /* ===== 5 档案袋 ===== */
+  .file-page { padding:88px 56px 96px; }
+  .file-env {
+    position:relative;
+    width:480px;
+    margin:0 auto 54px;
+  }
+  .file-env .env {
+    background:#E9D9B8;
+    border:1px solid #D8C6A2;
+    height:250px;
+    position:relative;
+  }
+  .file-env .flap {
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:120px;
+    background:#E3D0A9;
+    border-bottom:1px solid #D8C6A2;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+  }
+  .file-env .string {
+    position:absolute;
+    top:132px; left:50%;
+    margin-left:-9px;
+  }
+  .file-env .card {
+    position:absolute;
+    top:36px; left:50%;
+    margin-left:-150px;
+    width:300px;
+    background:#FFFFFF;
+    border:1px solid #E2E2DE;
+    box-shadow:2px 3px 0 rgba(0,0,0,.07);
+    padding:20px 22px;
+    transform:rotate(1.5deg);
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:16px;
+    line-height:2;
+  }
+  .file-page .no {
+    font-family:"Consolas","Courier New",monospace;
+    font-size:14px;
+    letter-spacing:3px;
+    margin-bottom:26px;
+    padding-left:10px;
+  }
+  .file-page h2 {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:34px;
+    font-weight:400;
+    margin-bottom:22px;
+    padding-left:10px;
+  }
+  .file-page p { font-size:16px; line-height:2.1; padding-left:10px; }
+
+  /* ===== 6 勾选表 ===== */
+  .check-page { padding:92px 56px; }
+  .check-page .head {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:30px;
+    margin-bottom:14px;
+    transform:rotate(-1deg);
+  }
+  .check-page .sub { font-size:13px; color:#999; letter-spacing:2px; margin-bottom:44px; }
+  .check-row {
+    display:flex;
+    align-items:flex-start;
+    border-bottom:1px dashed #C9C9C4;
+    padding:20px 4px;
+    font-size:16px;
+  }
+  .check-row .box {
+    flex:none;
+    width:22px; height:22px;
+    border:1.5px solid #111;
+    margin-right:16px;
+    margin-top:2px;
+    position:relative;
+  }
+  .check-row .box.on::after {
+    content:"✓";
+    position:absolute;
+    left:3px; top:-3px;
+    font-size:18px;
+    font-weight:700;
+  }
+  .check-row .aside {
+    margin-left:auto;
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:14px;
+    color:#666;
+    transform:rotate(-2deg);
+    white-space:nowrap;
+  }
+  .check-page .scrib { display:block; margin-top:34px; padding-left:70%; }
+
+  /* ===== 7 信息页（横线笔记本） ===== */
+  .info-page { padding:92px 56px; }
+  .info-page .head {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:30px;
+    margin-bottom:46px;
+    transform:rotate(-1deg);
+  }
+  .ruled {
+    border:1.5px dashed #C9C9C4;
+    padding:36px 40px 12px;
+    background:
+      repeating-linear-gradient(
+        transparent,
+        transparent 43px,
+        #E4E4DF 43px,
+        #E4E4DF 44px
+      );
+  }
+  .ruled .row {
+    display:flex;
+    font-size:16px;
+    line-height:44px;
+  }
+  .ruled .row .k {
+    width:110px;
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    letter-spacing:2px;
+  }
+  .ruled .row .v { color:#999; }
+  .info-page .tip {
+    margin-top:26px;
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:14px;
+    color:#999;
+    text-align:right;
+    transform:rotate(-1deg);
+  }
+
+  /* ===== 8 灵感小卡 ===== */
+  .bonus-page { padding:92px 56px 100px; }
+  .mini-polaroid {
+    background:#FFFFFF;
+    width:250px;
+    padding:14px 14px 0;
+    border:1px solid #E2E2DE;
+    box-shadow:3px 5px 0 rgba(0,0,0,.05);
+    transform:rotate(2deg);
+    margin:0 auto 52px;
+    position:relative;
+  }
+  .mini-polaroid .photo {
+    background:#F7F7F5;
+    height:170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .mini-polaroid .cap {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:14px;
+    text-align:center;
+    padding:12px 0 14px;
+  }
+  .mini-polaroid .tape {
+    position:absolute;
+    top:-12px; left:50%;
+    margin-left:-38px;
+    width:76px; height:24px;
+    background:rgba(242,209,107,.55);
+    transform:rotate(-4deg);
+  }
+  .bonus-page h2 {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:30px;
+    font-weight:400;
+    text-align:center;
+    margin-bottom:22px;
+  }
+  .bonus-page p { font-size:16px; line-height:2.1; text-align:center; }
+  .bonus-page .scrib { display:block; margin-top:26px; text-align:center; }
+
+  /* ===== 9 互动 + 落款 ===== */
+  .bye-page { padding:100px 56px 84px; text-align:center; }
+  .bye-page .q {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:26px;
+    margin-bottom:44px;
+  }
+  .bye-page .ans {
+    width:440px;
+    margin:0 auto 72px;
+    border:1.5px dashed #B9B9B4;
+    padding:26px 0;
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:15px;
+    color:#999;
+    transform:rotate(-1deg);
+  }
+  .bye-page .sign {
+    font-family:"KaiTi","STKaiti","楷体",serif;
+    font-size:22px;
+    transform:rotate(-2deg);
+    margin-bottom:12px;
+  }
+  .bye-page .foot {
+    font-size:11px;
+    color:#999;
+    letter-spacing:4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- 1 封面 -->
+<div class="page cover">
+  <div class="tag">情绪实验室 · 实验记录</div>
+  <h1>
+    把「内耗」<span class="line2">放回抽屉</span>
+  </h1>
+  <div class="sub">一次给情绪做减法的实验</div>
+
+  <div class="stage">
+    <div class="green-blob"></div>
+    <div class="pixel-year">RELAX</div>
+    <div class="note-arrow">放轻松 →</div>
+    <!-- 简笔小人 + 云朵 + 纸飞机 -->
+    <svg width="300" height="290" viewBox="0 0 300 290" style="position:absolute; left:50%; margin-left:-110px; bottom:0;">
+      <!-- 头 -->
+      <circle cx="150" cy="46" r="30" fill="none" stroke="#111" stroke-width="3"/>
+      <circle cx="141" cy="44" r="3" fill="#111"/>
+      <circle cx="159" cy="44" r="3" fill="#111"/>
+      <path d="M141 57 Q150 65 159 57" fill="none" stroke="#111" stroke-width="2.5"/>
+      <!-- 身体 -->
+      <path d="M150 76 L150 168" stroke="#111" stroke-width="3"/>
+      <path d="M150 96 L112 128" stroke="#111" stroke-width="3"/>
+      <path d="M150 96 L188 128" stroke="#111" stroke-width="3"/>
+      <path d="M150 168 L116 216" stroke="#111" stroke-width="3"/>
+      <path d="M150 168 L184 216" stroke="#111" stroke-width="3"/>
+      <!-- 纸飞机（飞走的焦虑） -->
+      <path d="M96 26 L128 12 L126 34 Z" fill="none" stroke="#111" stroke-width="2.5"/>
+      <path d="M96 26 L126 22" stroke="#111" stroke-width="2.5"/>
+      <!-- 头顶小云朵 -->
+      <path d="M32 190 q-18 -6 -12 -24 q-2 -16 14 -18 q8 -18 28 -12 q18 -2 20 16 q14 8 6 24 q-6 12 -24 14 Z" fill="none" stroke="#111" stroke-width="2.5"/>
+      <path d="M186 202 q-14 -5 -10 -20 q-2 -12 11 -14 q6 -14 22 -10 q14 -2 16 13 q11 6 5 19 q-5 10 -19 12 Z" fill="none" stroke="#111" stroke-width="2.5"/>
+      <!-- 想法气泡 -->
+      <ellipse cx="238" cy="60" rx="44" ry="22" fill="none" stroke="#111" stroke-width="2.5"/>
+      <text x="238" y="66" text-anchor="middle" font-family="KaiTi,serif" font-size="17" fill="#111">呼——</text>
+      <circle cx="222" cy="84" r="3" fill="#111"/>
+      <circle cx="212" cy="92" r="2" fill="#111"/>
+    </svg>
+  </div>
+</div>
+
+<!-- 过渡白页 -->
+<div class="page trans">
+  <p>实验开始前，先做三次深呼吸。</p>
+</div>
+
+<!-- 2 背景 -->
+<div class="page story">
+  <div class="no">BACKGROUND · 实验背景</div>
+  <p>白天担心明天，晚上复盘今天。</p>
+  <p>脑子像开了十个聊天窗口，一条也没回。</p>
+  <p>越是想停，越停不下来。</p>
+  <p>与其一直内耗，<span class="mk">不如做一场给情绪做减法的实验。</span></p>
+  <div class="margin">
+    <svg width="150" height="60" viewBox="0 0 150 60">
+      <path d="M10 10 Q 90 55 140 22" fill="none" stroke="#111" stroke-width="2.5"/>
+      <path d="M128 12 L140 22 L124 32" fill="none" stroke="#111" stroke-width="2.5"/>
+    </svg>
+    <span class="scrib">实验目的：少想一点，多活一点</span>
+    <span class="scrib">（想太多不扣分，但费电）</span>
+  </div>
+</div>
+
+<!-- 过渡白页 -->
+<div class="page trans">
+  <p>实验分成三步。</p>
+</div>
+
+<!-- 3 正文 01：便签纸 -->
+<div class="page paper sticky-page">
+  <div class="sticky">
+    <svg class="pin" width="30" height="40" viewBox="0 0 30 40">
+      <path d="M15 40 C15 24 9 22 9 12 A6 6 0 1 1 21 12 C21 22 15 24 15 40 Z" fill="#FFFFFF" stroke="#111" stroke-width="2.5"/>
+    </svg>
+    <div class="no">STEP · 01</div>
+    <h2>写下来</h2>
+    <p>把担心的那件事，写在纸上。<br>写下来的瞬间，<br>它就小了一半。<br>写完再看，<br>很多担心其实没那么大。</p>
+  </div>
+  <p class="scrib" style="margin-top:38px; padding-left:56%;">焦虑最怕被看见</p>
+</div>
+
+<!-- 4 正文 02：拍立得 -->
+<div class="page polaroid-page">
+  <div class="polaroid">
+    <div class="tape"></div>
+    <div class="photo">
+      <svg width="220" height="220" viewBox="0 0 220 220">
+        <!-- 一杯热茶 -->
+        <path d="M70 96 L150 96 L138 176 L82 176 Z" fill="none" stroke="#111" stroke-width="4"/>
+        <path d="M150 104 Q176 118 150 136" fill="none" stroke="#111" stroke-width="4"/>
+        <ellipse cx="110" cy="96" rx="40" ry="7" fill="none" stroke="#111" stroke-width="3.5"/>
+        <path d="M96 78 Q102 66 96 54" fill="none" stroke="#111" stroke-width="2.5"/>
+        <path d="M112 74 Q116 60 112 48" fill="none" stroke="#111" stroke-width="2.5"/>
+        <path d="M126 78 Q130 66 126 56" fill="none" stroke="#111" stroke-width="2.5"/>
+        <text x="110" y="200" text-anchor="middle" font-family="Consolas,monospace" font-size="15" fill="#999" letter-spacing="2">SLOW DOWN</text>
+      </svg>
+    </div>
+    <div class="cap">实验助手 · 一杯热茶</div>
+  </div>
+  <div class="no">STEP · 02</div>
+  <h2>说出来</h2>
+  <p>找一个信得过的人，说五分钟。<br>话一出口，<br>烦恼就少一半。<br>你会发现，<br>原来不止你一个人这样。</p>
+  <span class="scrib">实在没人，对着杯子说也行</span>
+</div>
+
+<!-- 5 正文 03：档案袋 -->
+<div class="page paper file-page">
+  <div class="file-env">
+    <div class="env">
+      <div class="flap"></div>
+      <svg class="string" width="18" height="18" viewBox="0 0 18 18">
+        <circle cx="9" cy="9" r="8" fill="none" stroke="#111" stroke-width="2"/>
+      </svg>
+      <div class="card">
+        今日待办：<br>焦虑 ×0<br>内耗 ×0<br>喝水 ✓<br>（放不下的，明天再说）
+      </div>
+    </div>
+  </div>
+  <div class="no">STEP · 03</div>
+  <h2>放一放</h2>
+  <p>做完能做的，剩下的交给时间。<br>今天解决不了的，<br>明天再想。<br>睡一觉，<br>世界不会塌。</p>
+</div>
+
+<!-- 6 勾选表 -->
+<div class="page check-page">
+  <div class="head">情绪减负 · 请打勾</div>
+  <div class="sub">CHECK LIST / 2026.11</div>
+  <div class="check-row"><div class="box on"></div>今天的事今天做完<div class="aside">不欠账</div></div>
+  <div class="check-row"><div class="box on"></div>明天的焦虑明天再想<div class="aside">不过期</div></div>
+  <div class="check-row"><div class="box on"></div>允许自己普通<div class="aside">普通人万岁</div></div>
+  <div class="check-row"><div class="box"></div>一夜好眠<div class="aside">今晚开始自动打勾</div></div>
+  <span class="scrib">勾不勾得上，看你</span>
+</div>
+
+<!-- 7 信息页 -->
+<div class="page paper info-page">
+  <div class="head">实验信息</div>
+  <div class="ruled">
+    <div class="row"><span class="k">实验对象</span><span class="v">此刻的你</span></div>
+    <div class="row"><span class="k">实验周期</span><span class="v">现在开始</span></div>
+    <div class="row"><span class="k">注意事项</span><span class="v">别苛责自己</span></div>
+    <div class="row"><span class="k">实验编号</span><span class="v">No.013</span></div>
+  </div>
+  <div class="tip">填完这张表，实验即开始</div>
+</div>
+
+<!-- 8 灵感小卡 -->
+<div class="page bonus-page">
+  <div class="mini-polaroid">
+    <div class="tape"></div>
+    <div class="photo">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <rect x="30" y="34" width="80" height="80" rx="4" fill="none" stroke="#111" stroke-width="3.5"/>
+        <line x1="30" y1="52" x2="110" y2="52" stroke="#111" stroke-width="2"/>
+        <line x1="30" y1="68" x2="86" y2="68" stroke="#111" stroke-width="2"/>
+        <line x1="30" y1="84" x2="100" y2="84" stroke="#111" stroke-width="2"/>
+        <circle cx="56" cy="106" r="12" fill="#F2D16B" stroke="#111" stroke-width="2.5"/>
+        <text x="76" y="112" font-family="KaiTi,serif" font-size="17" fill="#111">×1</text>
+      </svg>
+    </div>
+    <div class="cap">灵感小卡 · 好心情</div>
+  </div>
+  <h2>一个彩蛋</h2>
+  <p>把这篇转给一个最近很累的朋友，<br>你们都会好一点。<br>顺便约他出来走走，<br>效果加倍。</p>
+  <span class="scrib">关心要趁早，转发要手快</span>
+</div>
+
+<!-- 9 互动 + 落款 -->
+<div class="page bye-page">
+  <div class="q">你最近一次真正放松，是什么时候？</div>
+  <div class="ans">写在这里 → 评论区见</div>
+  <div class="sign">ZJUT AI 协会出品</div>
+  <div class="foot">白纸手账 · No.013 · 未完待续</div>
+</div>
+
+</body>
+</html>

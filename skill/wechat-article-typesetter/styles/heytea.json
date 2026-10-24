@@ -1,0 +1,40 @@
+{
+  "id": "heytea",
+  "name": "杨梅晚熟风",
+  "kicker": "晚熟 / LATE RIPEN",
+  "colors": {
+    "bg": "#F4F1EA",
+    "wall": "#E9E5DC",
+    "paper": "#FFFFFF",
+    "note_bg": "#FDFBF6",
+    "text": "#2B2925",
+    "muted": "#655E50",
+    "accent": "#8C2E2E",
+    "accent_light": "#C98888",
+    "accent_dark": "#6E1E1E",
+    "line": "#141210",
+    "black": "#0E0D0B",
+    "highlight_bg": "#EFD9D3",
+    "code_bg": "#F1E8E0",
+    "code_block_bg": "#0E0D0B",
+    "code_block_text": "#F5EFE2",
+    "tape": "rgba(176,80,80,0.4)",
+    "ring": "rgba(176,80,80,0.35)",
+    "ring_soft": "rgba(176,80,80,0.22)"
+  },
+  "fonts": {
+    "heading": "\"PingFang SC\",\"Microsoft YaHei Light\",\"Microsoft YaHei\",\"Helvetica Neue\",sans-serif",
+    "body": "\"PingFang SC\",\"Microsoft YaHei Light\",\"Microsoft YaHei\",\"Helvetica Neue\",sans-serif",
+    "mono": "\"Courier New\",Consolas,monospace"
+  },
+  "layout": {
+    "container_width": 677,
+    "body_size": 16,
+    "line_height": 2.0,
+    "h1_size": 44,
+    "h2_size": 26,
+    "h3_size": 18,
+    "padding": "36px 30px 44px",
+    "para_spacing": 20
+  }
+}

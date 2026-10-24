@@ -1,0 +1,3 @@
+_check.txt  11545B  PDF-markers,bad-chars
+_check2.txt  1916B  bad-chars
+docs\demo-video-script.md  13657B  NUL,PDF-markers,bad-chars

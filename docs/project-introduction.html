@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>公众号文字稿一键排版助手 · 作品介绍</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    margin: 0;
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    font-size: 10.8pt;
+    line-height: 1.85;
+    color: #1a1a1a;
+    background: #fff;
+  }
+  .cover { height: 245mm; display: block; padding-top: 50mm; page-break-after: always; }
+  .cover .kicker { font-size: 10pt; letter-spacing: 2px; color: #666; margin-bottom: 18mm; }
+  .cover h1 { font-family: "SimSun", "Songti SC", serif; font-size: 30pt; line-height: 1.35; margin: 0 0 6mm; }
+  .cover .subtitle { font-size: 15pt; color: #333; margin: 0 0 26mm; }
+  .cover .bar { width: 70px; height: 7px; background: #F0B030; margin-bottom: 26mm; }
+  .cover table { border-collapse: collapse; font-size: 10.5pt; }
+  .cover td { padding: 2.2mm 6mm 2.2mm 0; vertical-align: top; }
+  .cover td:first-child { color: #666; white-space: nowrap; }
+  h2 {
+    font-family: "SimSun", "Songti SC", serif;
+    font-size: 17pt;
+    margin: 12mm 0 5mm;
+    padding-left: 4mm;
+    border-left: 4px solid #1F4E79;
+    page-break-after: avoid;
+  }
+  h3 { font-size: 12.5pt; margin: 7mm 0 3mm; page-break-after: avoid; }
+  p { margin: 0 0 3.2mm; text-align: justify; }
+  ul, ol { margin: 0 0 3.5mm; padding-left: 7mm; }
+  li { margin-bottom: 1.2mm; }
+  table.data { width: 100%; border-collapse: collapse; margin: 3mm 0 5mm; font-size: 9.8pt; page-break-inside: avoid; }
+  table.data th, table.data td { border: 1px solid #C9D6E2; padding: 2mm 2.5mm; vertical-align: top; text-align: left; }
+  table.data th { background: #EEF3F7; font-weight: 600; }
+  pre {
+    background: #F5F7F9;
+    border: 1px solid #DDE5EC;
+    padding: 3mm 4mm;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 9pt;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 3mm 0 5mm;
+    page-break-inside: avoid;
+  }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 9.3pt; background: #F2F5F8; padding: 0 1mm; }
+  .note { background: #EEF3F7; border-left: 4px solid #1F4E79; padding: 3mm 4mm; margin: 4mm 0; page-break-inside: avoid; }
+  .shot { text-align: center; margin: 4mm 0 8mm; page-break-inside: avoid; }
+  .shot img { width: 64%; border: 1px solid #E2E2E2; }
+  .shot .caption { font-size: 9.2pt; color: #666; margin-top: 2mm; }
+  .page-break { page-break-before: always; }
+  .small { font-size: 9.5pt; color: #555; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="kicker">第四届开放原子大赛 · 2026 开源行业解决方案创新赛 · 赛道一</div>
+  <h1>公众号文字稿<br>一键排版助手</h1>
+  <div class="subtitle">作品介绍文档</div>
+  <div class="bar"></div>
+  <table>
+    <tr><td>项目标识</td><td>wechat-article-typesetter</td></tr>
+    <tr><td>参赛赛道</td><td>开源基础软件与解决方案</td></tr>
+    <tr><td>技术方向</td><td>AI 开发工具链与智能体框架（Agent Skill）</td></tr>
+    <tr><td>文档版本</td><td>2026-10-23</td></tr>
+    <tr><td>开源许可证</td><td>MIT License</td></tr>
+  </table>
+</div>
+
+<h2>一、项目概述</h2>
+
+<h3>项目名称</h3>
+<p>公众号文字稿一键排版助手</p>
+
+<h3>项目简介</h3>
+<p>这是一个面向微信公众号小编、学生社团运营者和自媒体新手的排版工具。用户把已经写好的文字稿（<code>.txt</code> / <code>.md</code>）交给它，它自动识别标题、小节、引用、列表和重点句，套用内置风格模板，生成一个<strong>可以直接粘贴进微信公众号编辑器的单文件 HTML</strong>，并在生成后自动检查排版质量。</p>
+<p>项目以 <strong>Agent Skill</strong> 的形式交付：<code>SKILL.md</code> 告诉 AI 什么时候该用、按什么步骤用；核心功能由可独立运行的 Python 脚本完成，不依赖任何第三方库，也不需要 API Key。</p>
+
+<h3>项目核心价值</h3>
+<ol>
+  <li><strong>降低排版门槛</strong>：不需要学秀米、135 编辑器，也不需要懂设计，一条命令出成品。</li>
+  <li><strong>解决“粘贴后样式丢失”</strong>：所有样式写成内联 <code>style</code>，不依赖 class、外部 CSS 和脚本。</li>
+  <li><strong>把审美变成可检查的指标</strong>：对比度、字号、行高、外链、容器宽度等 7 项自动检查，不合格直接报错。</li>
+  <li><strong>结果稳定可复现</strong>：同样的文字稿、风格和参数，每次输出一致，不依赖大模型临场发挥。</li>
+</ol>
+
+<h2>二、项目背景</h2>
+
+<h3>实际应用场景</h3>
+<p>项目作者是一名化工专业学生，日常需要为学生组织和公众号撰写推文。真实的工作流程是：</p>
+<ol>
+  <li>花一两个小时把文字内容写完；</li>
+  <li>再花一两个小时调字体、字号、行高、颜色、引用框；</li>
+  <li>粘贴进公众号编辑器后发现样式丢了，只能重新调；</li>
+  <li>下次写文章，上面三步再来一遍。</li>
+</ol>
+
+<h3>现有问题</h3>
+<ul>
+  <li><strong>设计工具学习成本高</strong>：秀米、135 等编辑器功能多，新手很难判断“怎样算好看”。</li>
+  <li><strong>模板工具输出固定</strong>：很多模板只能套固定版式，文章结构一变就不适用。</li>
+  <li><strong>AI 直接生成 HTML 不稳定</strong>：普通对话生成的 HTML 常带外部 CSS、class、脚本或外链图片，粘贴进公众号后样式失效；每次生成的结果也不一致。</li>
+  <li><strong>缺少质量底线</strong>：颜色太浅、字号太小、行高太挤等问题，肉眼不一定能及时发现。</li>
+</ul>
+
+<h3>项目要解决的痛点</h3>
+<p>把“排版”从一件需要审美和经验的手工活，变成一条<strong>输入文字稿、输出可粘贴成品</strong>的确定性流程，并且用自动检查守住基本的可读性底线。</p>
+
+<h2>三、技术架构</h2>
+
+<h3>使用的技术</h3>
+<table class="data">
+  <tr><th style="width:18%">层次</th><th style="width:42%">技术</th><th>作用</th></tr>
+  <tr><td>Skill 层</td><td>Agent Skills（<code>SKILL.md</code>）</td><td>描述触发条件、输入格式、执行步骤和限制</td></tr>
+  <tr><td>解析层</td><td>Python 标准库（<code>re</code>、<code>html</code>）</td><td>把文字稿解析成标题 + 结构化块</td></tr>
+  <tr><td>风格层</td><td>JSON 配置（<code>styles/*.json</code>）</td><td>保存四套风格的色板、字体、字号、间距</td></tr>
+  <tr><td>渲染层</td><td>Python 字符串模板</td><td>生成全部内联样式的单文件 HTML</td></tr>
+  <tr><td>校验层</td><td><code>html.parser</code> + WCAG 对比度算法</td><td>7 项排版质量检查</td></tr>
+  <tr><td>测试层</td><td><code>unittest</code></td><td>17 个自动化测试，覆盖生成、校验和命令行</td></tr>
+  <tr><td>演示层</td><td>Playwright（仅截图验证用）</td><td>浏览器实际渲染截图，确认视觉效果</td></tr>
+</table>
+
+<h3>Skill 的作用</h3>
+<p>Skill 不负责“画页面”，它负责三件事：</p>
+<ol>
+  <li><strong>判断何时触发</strong>：用户说“公众号排版”“文字稿排版”“这篇文章太丑了”等时加载。</li>
+  <li><strong>约束执行流程</strong>：先确认输入，再选风格，再运行脚本，最后必须跑校验。</li>
+  <li><strong>约束输出质量</strong>：明确 677px 容器、16px 正文、行高 ≥1.6、无外链等要求。</li>
+</ol>
+<p>真正的排版计算全部由脚本完成，避免 AI 每次自由发挥。</p>
+
+<h3>核心执行流程</h3>
+<pre>用户文字稿 (.md / .txt)
+        │
+        ▼
+parse_article()  ── 解析标题、小节、引用、列表、代码块、重点句
+        │
+        ▼
+render_html()   ── 读取 styles/*.json，生成全部内联样式的 HTML
+        │
+        ▼
+validate.py     ── 7 项自动检查
+        │            ├─ 禁用标签（script/style/link/iframe）
+        │            ├─ 容器宽度 677px
+        │            ├─ h1 数量
+        │            ├─ 外链资源
+        │            ├─ 内联样式覆盖
+        │            ├─ 文字对比度（WCAG AA）
+        │            └─ 正文字号 14–20px、行高 ≥1.6
+        ▼
+浏览器预览 → 全选复制 → 粘贴进公众号编辑器</pre>
+
+<h3>主要功能模块</h3>
+<table class="data">
+  <tr><th style="width:46%">文件</th><th>职责</th></tr>
+  <tr><td><code>skill/wechat-article-typesetter/SKILL.md</code></td><td>Skill 说明书：触发词、输入格式、执行步骤、异常处理</td></tr>
+  <tr><td><code>scripts/typeset.py</code></td><td>解析文字稿、加载风格、渲染 HTML、命令行入口</td></tr>
+  <tr><td><code>scripts/validate.py</code></td><td>HTML 结构解析、对比度计算、7 项检查、JSON 报告</td></tr>
+  <tr><td><code>styles/datawhale.json</code></td><td>科技蓝分享会风</td></tr>
+  <tr><td><code>styles/heytea.json</code></td><td>杨梅晚熟风</td></tr>
+  <tr><td><code>styles/minimal.json</code></td><td>极简书卷风</td></tr>
+  <tr><td><code>styles/academic.json</code></td><td>学术理工风</td></tr>
+  <tr><td><code>tests/test_typesetter.py</code></td><td>17 个自动化测试</td></tr>
+  <tr><td><code>examples/sample-article.md</code></td><td>演示用文字稿</td></tr>
+  <tr><td><code>examples/output/*.html</code></td><td>四套风格的实际生成结果</td></tr>
+</table>
+
+<h3>输入输出关系</h3>
+<table class="data">
+  <tr><th style="width:22%">项目</th><th>内容</th></tr>
+  <tr><td>输入</td><td>UTF-8 编码的 <code>.txt</code> / <code>.md</code> 文字稿；可选标题、作者、日期、点缀色、风格</td></tr>
+  <tr><td>输出</td><td>单文件 HTML（内联样式、无 JS、无外链、无外部字体）</td></tr>
+  <tr><td>输出尺寸</td><td>容器 <code>max-width: 677px</code>，正文 16px</td></tr>
+  <tr><td>使用方式</td><td>浏览器打开 → 全选复制 → 粘贴进公众号编辑器</td></tr>
+</table>
+
+<h2>四、核心功能</h2>
+
+<h3>1. 文字稿结构解析</h3>
+<p>支持标题、小节、次级标题、引用、无序列表、有序列表、代码块、分隔线、加粗、关键词高亮、行内代码。单换行保留为段内换行，空行分段。</p>
+
+<h3>2. 四套内置风格</h3>
+<table class="data">
+  <tr><th style="width:22%">风格</th><th style="width:43%">视觉特征</th><th>适合内容</th></tr>
+  <tr><td>科技蓝分享会风</td><td>手机卡片外框、浅灰白底、蓝色英文小标签、黑色大字块导语、空心数字编号、粗黑描边卡片、黄色虚线分隔</td><td>活动宣传、分享会、招募</td></tr>
+  <tr><td>杨梅晚熟风</td><td>手机卡片式外框、米白纸底、细黑体大字距标题、杨梅红点缀、水彩圆环与圆坑材质图案层、手画圆圈编号、手撕便签引用卡、装订竖线与打孔圆</td><td>生活、品牌、活动、系列内容</td></tr>
+  <tr><td>极简书卷风</td><td>宋体标题、首行缩进、朱红细线、少装饰</td><td>散文、随笔、观点、书评</td></tr>
+  <tr><td>学术理工风</td><td>宋体标题、深蓝点缀、左侧竖线、浅蓝引用框</td><td>理工科、技术分享、实验记录、教程</td></tr>
+</table>
+<p>喜茶风的视觉规则整理自 24 篇喜茶官方公众号推文（2021–2026）的排版分析，只借鉴版式规则，不使用任何官方图片或素材。</p>
+
+<h3>3. 自定义点缀色</h3>
+<p>通过 <code>--accent "#RRGGBB"</code> 替换整套风格的点缀色，适配不同主题。</p>
+
+<h3>4. 排版质量自动检查</h3>
+<p><code>validate.py</code> 输出 7 项检查结果，命令行返回非零退出码，便于接入自动化流程。</p>
+
+<h3>5. 命令行一键运行</h3>
+<pre>python skill/wechat-article-typesetter/scripts/typeset.py examples/sample-article.md \
+  --style heytea --author "化工小张" \
+  --output examples/output/sample-heytea.html --validate</pre>
+
+<h3>6. Agent Skill 集成</h3>
+<p>把 <code>skill/wechat-article-typesetter/</code> 放入支持 Agent Skills 的目录后，AI 在用户提到“公众号排版”“推文排版”等场景时自动加载 <code>SKILL.md</code>，并按其中步骤调用脚本。</p>
+
+<h2>五、应用场景</h2>
+
+<h3>面向用户</h3>
+<ul>
+  <li>学生社团、学生组织的公众号运营同学</li>
+  <li>个人自媒体、校园媒体新手</li>
+  <li>需要发技术分享、实验记录、活动推文的理工科学生</li>
+  <li>没有设计基础、但需要稳定排版质量的内容创作者</li>
+</ul>
+
+<h3>在什么情况下使用</h3>
+<ul>
+  <li>文字稿已经写好，只差排版</li>
+  <li>需要在 10 分钟内产出一篇版式统一的推文</li>
+  <li>文章粘贴进公众号后样式丢失，需要重新生成</li>
+  <li>想给系列文章保持统一视觉风格，但不想每次手动调</li>
+</ul>
+
+<h3>实际解决什么问题</h3>
+<p>把排版时间从“一两个小时”压缩到“一条命令 + 一次复制粘贴”，同时用自动检查避免颜色太浅、字号太小、行高太挤等可读性问题。</p>
+
+<h2>六、项目创新点</h2>
+
+<h3>与普通人工操作相比</h3>
+<ul>
+  <li>人工排版需要逐项设置字体、字号、颜色、间距；本项目把这些规则固化在 JSON 配置里，一次配置、反复使用。</li>
+  <li>人工容易漏掉对比度、行高等细节；本项目用算法自动检查并给出具体数值。</li>
+  <li>人工每次排版结果不一致；本项目同样输入必然得到同样输出。</li>
+</ul>
+
+<h3>与简单 AI 对话相比</h3>
+<ul>
+  <li>普通 AI 对话生成 HTML 依赖模型临场发挥，可能带外部 CSS、class、脚本，粘贴进公众号后失效；本项目生成的全部是内联样式，且校验器会拦截外链和禁用标签。</li>
+  <li>普通 AI 对话难以保证 677px 容器、16px 正文、行高 ≥1.6 等硬指标；本项目把它们写成可执行的检查项。</li>
+  <li>本项目把“何时用、怎么用”放进 Skill，把“实际执行”放进脚本，职责分离，结果可测试。</li>
+</ul>
+
+<h3>真实存在的技术或流程特点</h3>
+<ol>
+  <li><strong>公众号粘贴场景优先</strong>：不使用 <code>&lt;style&gt;</code>、class、外部字体和 JS，全部内联样式。</li>
+  <li><strong>可量化的排版检查</strong>：按 WCAG 公式计算文字与背景的对比度，普通文字要求 ≥4.5:1，大字要求 ≥3:1。</li>
+  <li><strong>零第三方依赖</strong>：只用 Python 标准库，任何安装 Python 3.9+ 的电脑都能运行。</li>
+  <li><strong>双层交付</strong>：Agent Skill 负责流程约束，Python CLI 负责确定性执行，二者可分别使用。</li>
+</ol>
+<div class="note">不夸大：本项目不是设计软件，不生成图片、插画、动画，也不替代人工审美判断；它解决的是“稳定、快速、可复制地完成基础排版”。</div>
+
+<h2>七、测试与运行效果</h2>
+
+<h3>测试环境</h3>
+<ul>
+  <li>系统：Windows 11</li>
+  <li>Python：3.12.9（项目要求 3.9+）</li>
+  <li>浏览器：Chromium（Playwright 驱动，仅用于截图验证）</li>
+</ul>
+
+<h3>自动化测试</h3>
+<p>执行命令：</p>
+<pre>python -m unittest discover -s tests -v</pre>
+<p>实际结果（2026-10-23）：</p>
+<pre>Ran 17 tests in 0.172s
+
+OK</pre>
+<p>测试覆盖：四套风格生成与 7 项检查、空输入报错、标题回退、HTML 注入转义、自定义点缀色、非法参数报错、Markdown 结构渲染、外链检出、低对比度检出、缺失内联样式检出、对比度算法已知值、命令行端到端运行、校验器 JSON 输出。</p>
+
+<h3>实际运行结果</h3>
+<pre>已生成：examples\output\sample-heytea.html
+排版校验：通过（7 项检查）
+
+已生成：examples\output\sample-minimal.html
+排版校验：通过（7 项检查）
+
+已生成：examples\output\sample-academic.html
+排版校验：通过（7 项检查）</pre>
+
+<h3>运行效果截图</h3>
+<div class="shot">
+  <img src="screenshots/sample-heytea.png" alt="喜茶风效果">
+  <div class="caption">杨梅晚熟风（实际生成页面整页截图）</div>
+</div>
+<div class="shot">
+  <img src="screenshots/sample-minimal.png" alt="极简书卷风效果">
+  <div class="caption">极简书卷风（实际生成页面整页截图）</div>
+</div>
+<div class="shot">
+  <img src="screenshots/sample-academic.png" alt="学术理工风效果">
+  <div class="caption">学术理工风（实际生成页面整页截图）</div>
+</div>
+
+<h3>已验证与未验证内容</h3>
+<p><strong>已验证：</strong>四套风格的实际浏览器渲染；命令行生成、校验、错误处理；17 个自动化测试；生成 HTML 无 <code>script</code>、<code>style</code>、<code>link</code>、外链资源。</p>
+<p><strong>未验证（如实说明）：</strong>真实公众号后台的最终粘贴效果需要登录账号，本次开发环境无法完成；本项目通过“全内联样式 + 禁用标签检查”提高兼容性，但公众号编辑器仍可能对个别 CSS 做二次处理。不同手机、不同字体环境下的最终显示可能有差异。</p>
+
+<h2>八、开源与可复现性</h2>
+
+<h3>许可证</h3>
+<p>MIT License。</p>
+
+<h3>复现步骤</h3>
+<ol>
+  <li>安装 Python 3.9 或更高版本；</li>
+  <li>获取项目文件；</li>
+  <li>运行 <code>python -m unittest discover -s tests -v</code>，确认 17 个测试通过；</li>
+  <li>运行示例命令生成 HTML；</li>
+  <li>用浏览器打开 HTML 查看效果。</li>
+</ol>
+<p>项目不使用第三方依赖，不需要网络、API Key 或数据库。</p>
+
+<h3>项目结构</h3>
+<pre>wechat-article-typesetter/
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── .gitignore
+├── skill/
+│   └── wechat-article-typesetter/
+│       ├── SKILL.md
+│       ├── scripts/
+│       │   ├── typeset.py
+│       │   └── validate.py
+│       └── styles/
+│           ├── heytea.json
+│           ├── minimal.json
+│           └── academic.json
+├── examples/
+│   ├── sample-article.md
+│   └── output/
+├── tests/
+│   └── test_typesetter.py
+└── docs/
+    ├── project-introduction.md
+    ├── project-introduction.html
+    ├── project-introduction.pdf
+    ├── demo-video-script.md
+    └── screenshots/</pre>
+
+<h2>九、已知限制</h2>
+<ol>
+  <li>只排版用户提供的文字，不代写、不改写正文。</li>
+  <li>不支持图片、图床、封面图，图片需在公众号编辑器中手动插入。</li>
+  <li>不支持表格、SVG、动画和点击交互。</li>
+  <li>字体依赖读者设备，不同系统渲染略有差异。</li>
+  <li>生成的 HTML 是静态近似，不等同于专业设计软件产出。</li>
+  <li>未在真实公众号后台完成最终粘贴验证（见第七节说明）。</li>
+</ol>
+
+</body>
+</html>

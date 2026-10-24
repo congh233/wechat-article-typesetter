@@ -1,0 +1,30 @@
+{
+  "id": "minimal",
+  "name": "极简书卷风",
+  "kicker": "随笔 / ESSAY",
+  "colors": {
+    "bg": "#FFFFFF",
+    "paper": "#FAFAF8",
+    "text": "#1A1A1A",
+    "muted": "#6B6B6B",
+    "accent": "#C0392B",
+    "line": "#D8D8D4",
+    "highlight_bg": "#F3E3E0",
+    "code_bg": "#F4F4F2"
+  },
+  "fonts": {
+    "heading": "\"Songti SC\",\"SimSun\",\"STSong\",serif",
+    "body": "\"PingFang SC\",\"Microsoft YaHei\",\"Helvetica Neue\",sans-serif",
+    "mono": "\"Courier New\",Consolas,monospace"
+  },
+  "layout": {
+    "container_width": 677,
+    "body_size": 16,
+    "line_height": 1.95,
+    "h1_size": 34,
+    "h2_size": 22,
+    "h3_size": 17,
+    "padding": "34px 26px 42px",
+    "para_spacing": 18
+  }
+}
